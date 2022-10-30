@@ -12,6 +12,55 @@ canvas {
     outline:0;
 }
 
+h1{
+    position: absolute !important;
+    bottom: 20px;
+    text-transform: uppercase;
+    font-family: roc-grotesk-wide, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2vw;
+    padding-left: 20px;
+    color: rgb(132, 255, 0);
+}
+h2{
+    position: absolute !important;
+    bottom: 20px;
+    right: 40px;
+    text-transform: uppercase;
+    font-family: roc-grotesk-wide, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2vw;
+    color: rgb(132, 255, 0);
+}
+h3{
+    position: absolute !important;
+    top: 30px;
+    transform: translateX(-50%);
+    left: 50%;
+    text-transform: uppercase;
+    font-family: roc-grotesk-wide, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 2vw;
+    color: rgb(144, 247, 70);
+    -webkit-text-stroke-color: rgb(144, 247, 70);
+    -webkit-text-stroke-width: .4px;
+}
+#name{
+    position: absolute !important;
+    bottom: 10px;
+    transform: translateX(-50%);
+    left: 50%;
+    text-transform: uppercase;
+    font-family: roc-grotesk-wide, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2vw;
+    color: rgb(144, 247, 70);
+}
+
 * {
     /* disable on touch highlights of html elements, especially on mobile! */
     -webkit-tap-highlight-color: transparent;
