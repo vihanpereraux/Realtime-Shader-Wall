@@ -11,9 +11,13 @@
 
     <!-- custom styles -->
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/loader.css">
 
     <!-- adobe fonts package -->
     <link rel="stylesheet" href="https://use.typekit.net/wcs6mhl.css">
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 
@@ -22,16 +26,55 @@
 
     <!-- content -->
     <div class="container-fluid">
-        <h1>10 / 30 / 2022</h1>
-        <h2>07.20 pm</h1>
-        <h3>✹ her voice is real ✹</h3>
+        <h1 id="title">✹ her voice is real ✹</h3>
+        <h1 id="date-stat"><span id="month"></span> / <span id="date"></span> / <span id="year"></span></h1>
+        <h1 id="time"><span id="hours"></span> . <span id="mins"></span> <span id="am-pm-text"></span></h1>
         <a href="https://github.com/vihanpereraux" target="_blank"><p id="name">made by vihan perera 🡥</p></a>
     </div>
     <!-- end of content -->
 
+    <!-- loader wrapper -->
+    <div class="loader-wrapper">
+        <h5 id="progress-text">SCENE IS BUILDING</h5>
+        <div id="progress-bar"></div>
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    <!-- end of loader wrapper -->
+
     <script type="text/javascript" src="js/patch.js" async></script>
     
     <script>
+        $(window).on("load", function(){
+            setTimeout(function(){
+                $(".loader-wrapper").fadeOut("slow");
+            }, 4000)
+        });
+
+        const today = new Date();
+
+        var intervalId = window.setInterval(function(){            
+            var month = document.getElementById('month');
+            month.innerHTML = today.getMonth()+1;
+            var date = document.getElementById('date');
+            date.innerHTML = today.getDate();
+            var year = document.getElementById('year');
+            year.innerHTML = today.getFullYear();
+
+            var hours = document.getElementById('hours');
+            hours.innerHTML = today.getHours();
+            var mins = document.getElementById('mins');
+            mins.innerHTML = today.getMinutes();
+
+            var amPmText = document.getElementById('am-pm-text');
+            if(hours >= 12){
+                amPmText.innerHTML = "pm";
+            }
+            else{
+                amPmText.innerHTML = "am";
+            }
+        }, 1000);
+
+
         // disable rubberband effect on mobile devices
         document.getElementById('glcanvas').addEventListener('touchmove', (e)=>{ e.preventDefault(); }, false);
 
@@ -41,6 +84,11 @@
         }
 
         function patchFinishedLoading(patch) {
+            var cozyAudio = new Audio('assets/music/track.mp3');
+            cozyAudio.autoplay = true;
+            cozyAudio.loop = true;
+            cozyAudio.volume = 0.2;
+            cozyAudio.play();
             // The patch is ready now, all assets have been loaded
         }
 
